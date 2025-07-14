@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Título de la app
+# Configuración de la página
 st.set_page_config(page_title="Proyecto Licencias Médicas", layout="wide")
 
 st.title("📊 Análisis de Licencias Médicas")
@@ -21,10 +21,10 @@ seccion = st.sidebar.radio("Ir a:", [
     "Propuesta de Mejora"
 ])
 
-# Cargar datos (ajusta la ruta según tu archivo)
+# Cargar datos (ajusta la ruta si tu archivo está en la carpeta data)
 @st.cache_data
 def cargar_datos():
-    df = pd.read_csv('licencias_limpias.csv')  # o el que tengas
+    df = pd.read_csv('data/licencias_limpias.csv')
     return df
 
 df = cargar_datos()
@@ -61,7 +61,7 @@ elif seccion == "Análisis y Visualizaciones":
     ax.set_title('Distribución de Licencias por Género')
     st.pyplot(fig)
 
-    # Agrega aquí más gráficos relevantes
+    # Aquí puedes agregar más gráficos
 
 elif seccion == "Insights y Conclusiones":
     st.header("💡 Insights y Conclusiones")
@@ -79,6 +79,6 @@ elif seccion == "Propuesta de Mejora":
     - Desarrollar dashboard interactivo para distintos perfiles de usuario.
     """)
 
-# Footer
+# Footer bonito
 st.markdown("---")
-st.write("Creado por el grupo
+st.markdown("<p style='text-align: center; font-style: italic;'>Creado por el grupo para la entrega final de Business Intelligence</p>", unsafe_allow_html=True)
